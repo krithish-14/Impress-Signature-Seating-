@@ -5,20 +5,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 BRAND_IMAGES_ROOT = BASE_DIR / "brand-images"
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-impress-seating-dev-key")
-ON_VERCEL = os.environ.get("VERCEL") == "1"
+ON_VERCEL = bool(os.environ.get("VERCEL") or os.environ.get("VERCEL_URL"))
 DEBUG = not ON_VERCEL
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-CSRF_TRUSTED_ORIGINS = []
-
-if ON_VERCEL:
-    ALLOWED_HOSTS += [".vercel.app", ".now.sh"]
-    CSRF_TRUSTED_ORIGINS += ["https://*.vercel.app"]
-    vercel_url = os.environ.get("VERCEL_URL")
-    if vercel_url:
-        ALLOWED_HOSTS.append(vercel_url)
-        CSRF_TRUSTED_ORIGINS.append(f"https://{vercel_url}")
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-    USE_X_FORWARDED_HOST = True
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    ".vercel.app",
+    ".now.sh",
+    "impress-signature-seating-dusky.vercel.app",
+]
+CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app", "https://impress-signature-seating-dusky.vercel.app"]
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
