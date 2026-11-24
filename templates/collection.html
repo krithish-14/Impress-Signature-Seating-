@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load catalog_tags %}
+{% block title %}{{ category.name }} Collection — Impress Signature Seating{% endblock %}
+{% block content %}
+<section class="nlv2_bredcrumb_wrapper">
+  <div class="banner-content"><h1>{{ category.name }} Collection</h1></div>
+</section>
+<section class="shop-section">
+  <div class="shop-wrap-full">
+    <div class="products-col-full">
+      <nav class="product-category-nav" aria-label="Product categories">
+        <div class="product-category-links">
+          {% for cat in categories %}
+          <a href="{{ cat.get_absolute_url }}" class="product-category-btn{% if cat.slug == category.slug %} is-active{% endif %}">
+            <span>{{ cat.nav_label }}</span>
+            <span class="product-category-count">{{ cat.products.count }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </nav>
+      <div class="product-grid grid-cols-4{% if category.slug == 'chairs' %} chair-page{% endif %}" id="product-grid">
+        {% for product in products %}
+          {% if category.slug == "chairs" %}
+          <div class="product-card chair-card">
+            <div class="chair-img-section">
+              <div class="product-img-wrap chair-img-wrap">
+                <a class="product-media-link" href="{{ product.get_absolute_url }}"><img src="{{ product.image_url }}" alt="{{ product.name }}"></a>
+              </div>
+            </div>
+            <div class="product-info chair-info">
+              <div class="chair-card-badge">{{ product.sort_order|stringformat:"02d" }}</div>
+              <h3 class="product-name chair-name"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+              <div class="chair-divider"></div>
+              <div class="chair-meta">
+                <div class="chair-meta-row">
+                  <span class="meta-icon-wrap"><i class="fa-solid fa-chair"></i></span>
+                  <div class="meta-text-wrap">
+                    <span class="meta-label">Quantity:</span>
+                    <span class="meta-value qty-value">{{ product.qty }}</span>
+                  </div>
+                </div>
+              </div>
+              {% include "includes/card_actions.html" %}
+            </div>
+          </div>
+          {% else %}
+          <div class="product-card sofa-card {{ product|card_class }}">
+            <div class="product-img-wrap">
+              <a class="product-media-link" href="{{ product.get_absolute_url }}"><img src="{{ product.image_url }}" alt="{{ product.name }}"></a>
+            </div>
+            <div class="product-info sofa-info">
+              <div class="sofa-card-title-row">
+                <span class="sofa-card-badge">{{ product.sort_order|stringformat:"02d" }}</span>
+                <h3 class="product-name sofa-name" title="{{ product.name }}"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+              </div>
+              <div class="sofa-divider"></div>
+              <div class="sofa-meta-grid">
+                <div class="sofa-meta-block">
+                  <span class="meta-icon-wrap"><i class="fa-solid fa-ruler-combined"></i></span>
+                  <div class="meta-text-wrap">
+                    <span class="meta-label">Size:</span>
+                    <span class="meta-value size-value" title="{{ product.size }}">{{ product.size|sofa_size }}</span>
+                  </div>
+                </div>
+                <div class="sofa-meta-block">
+                  <span class="meta-icon-wrap"><i class="fa-solid fa-couch"></i></span>
+                  <div class="meta-text-wrap">
+                    <span class="meta-label">Quantity:</span>
+                    <span class="meta-value qty-value">{{ product.qty }}</span>
+                  </div>
+                </div>
+              </div>
+              {% include "includes/card_actions.html" %}
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

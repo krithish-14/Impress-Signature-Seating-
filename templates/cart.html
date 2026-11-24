@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cart — Impress Signature Seating{% endblock %}
+{% block content %}
+<section class="nlv2_bredcrumb_wrapper"><div class="banner-content"><h1>Cart</h1></div></section>
+<section class="shop-section">
+  <div class="bag-wrap">
+    <div class="bag-empty" id="cartEmpty">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <h2>Your cart is empty</h2>
+      <p>Add seating from any collection, then send one enquiry for the whole selection.</p>
+      <a class="card-btn" href="{% url 'collection' 'sofas' %}">Browse Collections</a>
+    </div>
+    <div class="bag-list" id="cartList" hidden></div>
+    <div class="bag-footer" id="cartFooter" hidden>
+      <p>Items in cart: <strong id="cartTotal">0</strong></p>
+      <a class="consult-btn" href="{% url 'contact' %}">Request Quote</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/cart-page.js' %}"></script>{% endblock %}

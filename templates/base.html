@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Impress Signature Seating{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+{% with url_name=request.resolver_match.url_name %}
+<header class="impress-header">
+  <div class="logo-area">
+    <a href="{% url 'home' %}">
+      <img src="/brand-images/headerlogo.svg" alt="Impress Signature Seating" class="logo-img">
+    </a>
+  </div>
+  <div class="header-bottom">
+    <nav>
+      <ul class="nav-menu">
+        <li class="{% if url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">HOME</a></li>
+        <li class="separator"></li>
+        <li class="has-dropdown {% if url_name == 'collection' or url_name == 'product_detail' %}active{% endif %}">
+          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">COLLECTIONS</a>
+          <ul class="submenu" aria-label="Collections submenu">
+            {% for cat in nav_categories %}
+            <li><a href="{{ cat.get_absolute_url }}" class="{% if category and category.slug == cat.slug %}active{% endif %}">{{ cat.nav_label }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="separator"></li>
+        <li class="{% if url_name == 'event_solutions' %}active{% endif %}"><a href="{% url 'event_solutions' %}">EVENT SEATING SOLUTIONS</a></li>
+        <li class="separator"></li>
+        <li class="{% if url_name == 'gallery' %}active{% endif %}"><a href="{% url 'gallery' %}">GALLERY</a></li>
+        <li class="separator"></li>
+        <li class="{% if url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}">CONTACT</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <a href="{% url 'wishlist' %}" class="header-icon" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="header-count" data-count="wishlist" hidden>0</span>
+      </a>
+      <a href="{% url 'cart' %}" class="header-icon" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="header-count" data-count="cart" hidden>0</span>
+      </a>
+      <a href="{% url 'contact' %}" class="consult-btn">Get A Quote</a>
+    </div>
+  </div>
+</header>
+
+<header class="mobile-header">
+  <div class="mobile-header-inner">
+    <a href="{% url 'home' %}" class="mobile-logo">
+      <img src="/brand-images/headerlogo.svg" alt="Logo">
+    </a>
+    <div class="mobile-tools">
+      <a href="{% url 'wishlist' %}" class="header-icon" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="header-count" data-count="wishlist" hidden>0</span></a>
+      <a href="{% url 'cart' %}" class="header-icon" aria-label="Cart"><i class="fa-solid fa-bag-shopping"></i><span class="header-count" data-count="cart" hidden>0</span></a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button">☰</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="{% url 'home' %}">HOME</a></li>
+      <li class="mobile-dropdown {% if url_name == 'collection' or url_name == 'product_detail' %}active{% endif %}">
+        <button class="submenu-toggle" type="button" aria-expanded="false">COLLECTIONS +</button>
+        <ul class="mobile-submenu">
+          {% for cat in nav_categories %}
+          <li><a href="{{ cat.get_absolute_url }}">{{ cat.nav_label }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li><a href="{% url 'event_solutions' %}">EVENT SEATING SOLUTIONS</a></li>
+      <li><a href="{% url 'gallery' %}">GALLERY</a></li>
+      <li><a href="{% url 'contact' %}">CONTACT</a></li>
+      <li><a href="{% url 'wishlist' %}">WISHLIST</a></li>
+      <li><a href="{% url 'cart' %}">CART</a></li>
+      <li><a href="{% url 'contact' %}" class="mobile-quote-btn">Get A Quote</a></li>
+    </ul>
+  </div>
+</header>
+{% endwith %}
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand reveal">
+      <div class="logo-area2">
+        <img src="/brand-images/footerlogo.svg" alt="Impress Decors Logo" class="main-logo2">
+      </div>
+      <p class="footer-tagline">Impress Signature Seating brings together luxury, comfort, and craftsmanship to create exceptional seating experiences for every celebration.</p>
+    </div>
+    <div class="reveal">
+      <div class="footer-heading">Contact Us</div>
+      <div class="footer-info-row">
+        <div class="footer-info-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="footer-info-text"><a href="tel:{{ site_phone_tel }}"> {{ site_phone }}</a></div>
+      </div>
+      <div class="footer-info-row">
+        <div class="footer-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="footer-info-text">
+          No. 86/1B1A Toll Plaza, Sea City Main Road,<br> East Coast Rd,<br>
+          near Aruna Farm Lane, near Uthandi,<br> Kannathur Reddy Kuppam,<br>
+          Chennai – 603112.
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="footer-heading">Quick Links</div>
+      <div class="footer-quick-links">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'collection' 'sofas' %}">Collections</a></li>
+          <li><a href="{% url 'event_solutions' %}">Event Seating Solutions</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      © 2026 <span style="color: #C9973A;">Impress Signature Seating.</span>
+      All Rights Reserved. Website Developed by <a href="https://www.jodbs.com/" target="_blank" style="color:#e8bd4f;">JOD Business Services.</a>
+    </div>
+    <div class="footer-links">
+      <a href="{% url 'privacy' %}">Privacy Policy</a>
+      <a href="{% url 'terms' %}">Terms</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/{{ site_whatsapp }}" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+  <img src="/brand-images/wp.gif" alt="WhatsApp">
+</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var menuBtn = document.getElementById("mobileMenuBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", function () { mobileMenu.classList.toggle("active"); });
+  }
+  document.querySelectorAll(".submenu-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var submenu = this.nextElementSibling;
+      var isOpen = submenu.classList.toggle("active");
+      this.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+});
+</script>
+<script src="{% static 'js/store.js' %}"></script>
+<script src="{% static 'js/card-actions.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

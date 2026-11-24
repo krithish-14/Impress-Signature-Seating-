@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ product.name }} — Impress Signature Seating{% endblock %}
+{% block content %}
+<section class="nlv2_bredcrumb_wrapper">
+  <div class="banner-content"><h1>{{ product.name }}</h1></div>
+</section>
+<section class="shop-section">
+  <div class="pdp-wrap">
+    <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <span>›</span>
+      <a href="{{ product.category.get_absolute_url }}">{{ product.category.nav_label }} Collection</a>
+      <span>›</span>
+      <span>{{ product.name }}</span>
+    </nav>
+    <div class="pdp-card">
+      <div class="pdp-gallery">
+        <button type="button" class="pdp-main-img" id="pdpMainImg">
+          <img src="{{ product.image_url }}" alt="{{ product.name }}">
+        </button>
+        <p class="pdp-zoom-hint">Click image to see full view</p>
+        <p class="pdp-desc">{{ product.description }}</p>
+        <div class="pdp-services">
+          <div><i class="fa-solid fa-truck"></i> Event delivery</div>
+          <div><i class="fa-solid fa-rotate-left"></i> Pickup included</div>
+          <div><i class="fa-solid fa-shield-halved"></i> Premium quality</div>
+          <div><i class="fa-solid fa-headset"></i> Quote support</div>
+        </div>
+      </div>
+      <div class="pdp-info">
+        <p class="pdp-kicker">{{ product.category.nav_label }} Collection</p>
+        <h2>{{ product.name }}</h2>
+        <div class="sofa-divider"></div>
+        <div class="pdp-specs">
+          {% if product.size %}<div><span>Size</span><strong>{{ product.size }}</strong></div>{% endif %}
+          <div><span>Catalogue quantity</span><strong>{{ product.qty }}</strong></div>
+          <div><span>Available now</span><strong>{{ product.available_units }}</strong></div>
+          {% if product.style %}<div><span>Style</span><strong>{{ product.style }}</strong></div>{% endif %}
+          <div><span>Category</span><strong>{{ product.category.nav_label }}</strong></div>
+        </div>
+        <p class="pdp-stock {% if not product.available_units %}is-out{% endif %}">{% if product.available_units %}In stock{% else %}Currently rented out{% endif %}</p>
+        <label class="pdp-qty" for="pdp-qty">Quantity
+          <input id="pdp-qty" type="number" min="1" max="{{ max_qty }}" value="1" {% if product.available_units < 1 %}disabled{% endif %}>
+        </label>
+        <div class="pdp-actions">
+          <button class="consult-btn" type="button" id="pdpCartBtn" {% if product.available_units < 1 %}disabled{% endif %}><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+          <button class="pdp-outline" type="button" id="pdpWishBtn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+          <a class="pdp-outline" id="pdpEnquireBtn" href="{% url 'contact' %}?slug={{ product.slug }}&product={{ product.name|urlencode }}&qty=1">Enquire about this piece</a>
+          <a class="pdp-whatsapp" id="pdpWhatsappBtn" target="_blank" rel="noreferrer" href="https://wa.me/{{ site_whatsapp }}"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    {% if related %}
+    <h2 class="pdp-related-title">More from this collection</h2>
+    <div class="product-grid grid-cols-4">
+      {% for item in related %}
+      <a class="product-card sofa-card" href="{{ item.get_absolute_url }}">
+        <div class="product-img-wrap"><img src="{{ item.image_url }}" alt="{{ item.name }}"></div>
+        <div class="product-info sofa-info"><h3 class="product-name sofa-name">{{ item.name }}</h3></div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+<div class="pdp-lightbox" id="pdpLightbox" hidden>
+  <button type="button" id="pdpLightboxClose" aria-label="Close">×</button>
+  <img src="{{ product.image_url }}" alt="{{ product.name }}">
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+window.IMPRESS_PDP = {
+  slug: "{{ product.slug|escapejs }}",
+  name: "{{ product.name|escapejs }}",
+  image: "{{ product.image_url|escapejs }}",
+  url: "{{ product.get_absolute_url|escapejs }}",
+  category: "{{ product.category.nav_label|escapejs }}",
+  whatsapp: "{{ site_whatsapp|escapejs }}"
+};
+</script>
+<script src="{% static 'js/product.js' %}"></script>
+{% endblock %}

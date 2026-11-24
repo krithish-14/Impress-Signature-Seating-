@@ -1,0 +1,49 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<style>
+  .impress-stats { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-bottom:22px; }
+  .impress-stat, .impress-panel { background:#fff; border:1px solid #eadfce; border-radius:12px; padding:16px; }
+  .impress-stat span { display:block; color:#6d6458; font-size:13px; }
+  .impress-stat strong { display:block; margin-top:6px; font-size:28px; color:#0d4a3e; }
+  .impress-panel h2 { margin:0 0 8px; color:#0d4a3e; }
+  .impress-panel table { width:100%; border-collapse:collapse; }
+  .impress-panel td, .impress-panel th { text-align:left; padding:8px 6px; border-bottom:1px solid #f0e7da; vertical-align:top; }
+  .impress-pill { border-radius:999px; padding:3px 8px; font-size:12px; font-weight:700; background:#f3ead7; color:#7a5b16; }
+  @media (max-width: 900px) { .impress-stats { grid-template-columns:1fr 1fr; } }
+</style>
+<div class="impress-stats">
+  <div class="impress-stat"><span>Collections</span><strong>{{ impress_collections }}</strong></div>
+  <div class="impress-stat"><span>Products</span><strong>{{ impress_products }}</strong></div>
+  <div class="impress-stat"><span>Live units</span><strong>{{ impress_units }}</strong></div>
+  <div class="impress-stat"><span>Rented products</span><strong>{{ impress_rented }}</strong></div>
+  <div class="impress-stat"><span>New quotes</span><strong>{{ impress_new_quotes }}</strong></div>
+</div>
+<div class="impress-panel">
+  <h2>Recent enquiries</h2>
+  <p>Website contact and cart quotes appear here as soon as a customer sends them.</p>
+  {% if not impress_recent %}
+    <p>No enquiries yet.</p>
+  {% else %}
+    <table>
+      <thead><tr><th>Customer</th><th>Products</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        {% for quote in impress_recent %}
+        <tr>
+          <td><strong>{{ quote.name }}</strong><br>{{ quote.email }}</td>
+          <td>
+            {% for line in quote.items.all %}
+              {{ line.product_name }} × {{ line.quantity }}<br>
+            {% empty %}
+              General message
+            {% endfor %}
+          </td>
+          <td><span class="impress-pill">{{ quote.get_status_display }}</span></td>
+          <td><a href="{% url 'impress_admin:catalog_inquiry_change' quote.pk %}">View</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  <p style="margin-top:16px;"><a class="button" href="{% url 'impress_admin:catalog_inquiry_changelist' %}">All enquiries</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,409 @@
+[
+  {
+    "slug": "sofas",
+    "name": "Sofa",
+    "nav_label": "Sofa",
+    "subtitle": "Premium Event Seating",
+    "description": "Luxury sofa collections crafted for weddings, receptions, corporate events and exclusive celebrations.",
+    "image": "sofa-home.webp",
+    "icon": "fa-solid fa-couch",
+    "sort_order": 1,
+    "products": [
+      {
+        "name": "Ratan Sofa Small",
+        "img": "images/sofas/Ratan Sofa Small.webp",
+        "size": "w70\" H31\" D24\" / W29\" H31\" D24\"",
+        "style": "",
+        "qty": "18 Sets"
+      },
+      {
+        "name": "Ratan Sofa Big",
+        "img": "images/sofas/Ratan Sofa Big.webp",
+        "size": "W69\" H39\" D26\" / W28\" H39\" D26\"",
+        "style": "",
+        "qty": "15 Sets"
+      },
+      {
+        "name": "VIP Leather Sofa",
+        "img": "images/sofas/VIP Leather Sofa.webp",
+        "size": "W45\" H37\" D33\" / W27\" H37\" D33\"",
+        "style": "",
+        "qty": "18 Sets"
+      },
+      {
+        "name": "Modular Channel Tufted Backrest Sofa",
+        "img": "images/sofas/Modular Channel Tufted Backrest Sofa.webp",
+        "size": "W74\" H31\" D31 / W36\" H31\" D31\"",
+        "style": "",
+        "qty": "12 Sets"
+      },
+      {
+        "name": "Channel Tufted Backrest Sofa(Red)",
+        "img": "images/sofas/Channel Tufted Backrest Sofa(Red).webp",
+        "size": "1+3+1",
+        "style": "",
+        "qty": "1 Set"
+      },
+      {
+        "name": "Modular channel-tufted Backrest sofa(pink)",
+        "img": "images/sofas/Modular channel-tufted Backrest sofa(pink).webp",
+        "size": "1+3+1",
+        "style": "",
+        "qty": "12 sets 2 colours"
+      },
+      {
+        "name": "Modular channel-tufted Backrest sofa(white)",
+        "img": "images/sofas/Modular channel-tufted Backrest sofa(white).webp",
+        "size": "1+3+1",
+        "style": "",
+        "qty": "12 sets 2 colours"
+      },
+      {
+        "name": "Diwan With Back Rest",
+        "img": "images/sofas/Diwan With Back Rest.webp",
+        "size": "5 Colours Available",
+        "style": "",
+        "qty": "18 Nos"
+      },
+      {
+        "name": "Cream Double Sofa",
+        "img": "images/sofas/Cream Double Sofa.webp",
+        "size": "H: 2.9 ft × W: 4.6 ft",
+        "style": "",
+        "qty": "50 Nos"
+      },
+      {
+        "name": "Cream Single Sofa",
+        "img": "images/sofas/Cream Single Sofa.webp",
+        "size": "H: 2.9 ft × W: 2.8 ft",
+        "style": "",
+        "qty": "24 Nos"
+      },
+      {
+        "name": "Black Double Sofa",
+        "img": "images/sofas/Black Double Sofa.webp",
+        "size": "H: 2.5 ft × W: 4.4 ft",
+        "style": "",
+        "qty": "50 Nos"
+      },
+      {
+        "name": "Black Single Sofa",
+        "img": "images/sofas/Black Single Sofa.webp",
+        "size": "H: 2.5 ft × W: 2.6 ft",
+        "style": "",
+        "qty": "25 Nos"
+      },
+      {
+        "name": "White Double Sofa",
+        "img": "images/Sofas/White Double Sofa.webp",
+        "size": "H: 2.6 ft × W: 4.3 ft",
+        "style": "",
+        "qty": "200 Nos"
+      },
+      {
+        "name": "White Single Sofa",
+        "img": "images/sofas/White Single Sofa.webp",
+        "size": "H: 2.8 ft × W: 2.6 ft",
+        "style": "",
+        "qty": "100 Nos"
+      }
+    ]
+  },
+  {
+    "slug": "diwans",
+    "name": "Diwan",
+    "nav_label": "Diwan",
+    "subtitle": "Royal Lounge Seating",
+    "description": "Designer diwan arrangements for ceremonies, lounges, and celebrations.",
+    "image": "",
+    "icon": "fa-solid fa-bed",
+    "sort_order": 2,
+    "products": [
+      {
+        "name": "Yellow Modern Velvet Curved Diwan",
+        "img": "images/diwans/Yellow Modern Velvet Curved Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "1 Nos"
+      },
+      {
+        "name": "Purple Modern Velvet Curved Diwan",
+        "img": "images/diwans/Purple Modern Velvet Curved Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "1 Nos"
+      },
+      {
+        "name": "Blue Modern Velvet Curved Diwan",
+        "img": "images/diwans/Blue Modern Velvet Curved Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "1 Nos"
+      },
+      {
+        "name": "Red Modern Velvet Curved Diwan",
+        "img": "images/diwans/Red Modern Velvet Curved Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "1 Nos"
+      },
+      {
+        "name": "Green Modern Velvet Curved Diwan",
+        "img": "images/diwans/Green Modern Velvet Curved Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "1 Nos"
+      },
+      {
+        "name": "Modular Ribbed Velvet Diwan",
+        "img": "images/diwans/Modular Ribbed Velvet Diwan.Webp",
+        "size": "5 Colours",
+        "style": "",
+        "qty": "4 Nos"
+      },
+      {
+        "name": "Modular Ribbed Velvet Diwan (Red)",
+        "img": "images/diwans/Modular Ribbed Velvet Diwan(Red).webp",
+        "size": "5 Colours",
+        "style": "",
+        "qty": "4 Nos"
+      },
+      {
+        "name": "Modular Ribbed Velvet Diwan (Blue)",
+        "img": "images/diwans/Modular Ribbed Velvet Sofa Blue.webp",
+        "size": "5 Colours",
+        "style": "",
+        "qty": "4 Nos"
+      },
+      {
+        "name": "Modular Ribbed Velvet Diwan (Green)",
+        "img": "images/diwans/Modular Ribbed Velvet Sofa Green Color.webp",
+        "size": "5 Colours",
+        "style": "",
+        "qty": "4 Nos"
+      },
+      {
+        "name": "Modular Ribbed Velvet Diwan (Purple)",
+        "img": "images/diwans/Modular Ribbed Velvet Sofa purple color.webp",
+        "size": "5 Colours",
+        "style": "",
+        "qty": "4 Nos"
+      },
+      {
+        "name": "Pallet Diwan",
+        "img": "images/diwans/Pallet Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "25 Nos"
+      },
+      {
+        "name": "White Diwan",
+        "img": "images/diwans/White Diwan.webp",
+        "size": "6/3F H11.5FT",
+        "style": "",
+        "qty": "100 Nos"
+      },
+      {
+        "name": "Floor Diwan",
+        "img": "images/diwans/Floor Diwan.webp",
+        "size": "6/3F H 4IN",
+        "style": "",
+        "qty": "25 Nos"
+      },
+      {
+        "name": "Color Diwan",
+        "img": "images/diwans/color diwan.webp",
+        "size": "Multiple Colours",
+        "style": "",
+        "qty": "25 Nos"
+      }
+    ]
+  },
+  {
+    "slug": "chairs",
+    "name": "Chair",
+    "nav_label": "Chair",
+    "subtitle": "Banquet and VIP Chairs",
+    "description": "Banquet, royal, and designer chairs for guest seating at every event.",
+    "image": "",
+    "icon": "fa-solid fa-chair",
+    "sort_order": 3,
+    "products": [
+      {
+        "name": "Golden Stainless Chairs",
+        "img": "images/chairs/Golden Stainless Chairs.webp",
+        "size": "W18\" H40\" D20\"",
+        "style": "Stainless Steel",
+        "qty": "150"
+      },
+      {
+        "name": "Golden Banquet Chairs",
+        "img": "images/chairs/Golden Banquet Chairs.webp",
+        "size": "W17\" H38\" D19\"",
+        "style": "Tufted Banquet",
+        "qty": "150"
+      },
+      {
+        "name": "Golden King Chairs",
+        "img": "images/chairs/Golden King Chairs.webp",
+        "size": "W22\" H52\" D24\"",
+        "style": "Royal King",
+        "qty": "25"
+      },
+      {
+        "name": "Rosegold Banquet Chairs",
+        "img": "images/chairs/Rosegold Banquet Chairs.webp",
+        "size": "W17\" H38\" D19\"",
+        "style": "Rosegold Banquet",
+        "qty": "20"
+      },
+      {
+        "name": "Fancy Gold Oval Chairs",
+        "img": "images/chairs/Fancy Gold Oval Chairs.webp",
+        "size": "W18\" H42\" D20\"",
+        "style": "Oval Back",
+        "qty": "1000"
+      },
+      {
+        "name": "Fancy Wooden Chairs",
+        "img": "images/chairs/Fancy Wooden Chairs.webp",
+        "size": "W17\" H39\" D18\"",
+        "style": "Wooden Carved",
+        "qty": "750"
+      },
+      {
+        "name": "Cross Back Metal Chairs",
+        "img": "images/chairs/Cross Back Metal Chairs.webp",
+        "size": "W17\" H37\" D19\"",
+        "style": "Cross Back",
+        "qty": "750"
+      },
+      {
+        "name": "Gold Chiavari Iron Chairs",
+        "img": "images/chairs/Gold Chiavari Iron Chairs.webp",
+        "size": "W16\" H37\" D18\"",
+        "style": "Chiavari Iron",
+        "qty": "750"
+      },
+      {
+        "name": "Chiavari Fiber Chairs",
+        "img": "images/chairs/Chiavari Fiber Chairs.webp",
+        "size": "W16\" H37\" D18\"",
+        "style": "Chiavari Fiber",
+        "qty": "150"
+      },
+      {
+        "name": "Gold Chameleon Metal Chairs",
+        "img": "images/chairs/Gold Chameleon Metal Chairs.webp",
+        "size": "W17\" H38\" D19\"",
+        "style": "Chameleon Metal",
+        "qty": "400"
+      },
+      {
+        "name": "Gold Chiavari Fiber Chairs",
+        "img": "images/chairs/Gold Chiavari Fiber Chairs.webp",
+        "size": "W16\" H37\" D18\"",
+        "style": "Gold Chiavari",
+        "qty": "1250"
+      },
+      {
+        "name": "Hi Back Cushion Blue Chair",
+        "img": "images/chairs/Hi Back Cushion Blue Chair.webp",
+        "size": "W18\" H36\" D20\"",
+        "style": "Cushioned",
+        "qty": "300"
+      },
+      {
+        "name": "Hi Back Cushion White Chair",
+        "img": "images/chairs/Hi Back Cushion White Chair.webp",
+        "size": "W18\" H36\" D20\"",
+        "style": "Cushioned",
+        "qty": "300"
+      },
+      {
+        "name": "Armless Acrylic Iron Chairs",
+        "img": "images/chairs/Armless Acrylic Iron Chairs.webp",
+        "size": "W17\" H39\" D19\"",
+        "style": "Acrylic Armless",
+        "qty": "1000"
+      },
+      {
+        "name": "Arm Acrylic Louis Ghost Chairs",
+        "img": "images/chairs/Arm Acrylic Louis Ghost Chairs.webp",
+        "size": "W20\" H39\" D21\"",
+        "style": "Louis Ghost Arm",
+        "qty": "300"
+      },
+      {
+        "name": "Armless Acrylic Oval Chairs",
+        "img": "images/chairs/Armless Acrylic Oval Chairs.webp",
+        "size": "W17\" H40\" D19\"",
+        "style": "Acrylic Oval",
+        "qty": "150"
+      },
+      {
+        "name": "Governor Chairs",
+        "img": "images/chairs/Governor Chairs.webp",
+        "size": "W23\" H48\" D25\"",
+        "style": "Governor Premium",
+        "qty": "50"
+      },
+      {
+        "name": "Hi Bar White Chairs",
+        "img": "images/chairs/Hi Bar White Chairs.webp",
+        "size": "W17\" H45\" D20\"",
+        "style": "High Bar",
+        "qty": "25"
+      },
+      {
+        "name": "Hi Bar Black Chairs",
+        "img": "images/chairs/Hi Bar Black Chairs.webp",
+        "size": "W17\" H45\" D20\"",
+        "style": "High Bar",
+        "qty": "25"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 1.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "4"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 2.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "4"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 3.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "6"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 4.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "6"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 5.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "6"
+      },
+      {
+        "name": "Low Raise Chairs",
+        "img": "images/chairs/Low Raise Chairs 6.webp",
+        "size": "W20\" H30\" D22\"",
+        "style": "Low Raise",
+        "qty": "6"
+      }
+    ]
+  }
+]

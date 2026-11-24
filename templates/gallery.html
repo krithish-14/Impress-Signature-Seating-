@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gallery — Impress Signature Seating{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+{% endblock %}
+{% block content %}
+<section class="nlv2_bredcrumb_wrapper">
+  <div class="banner-content"><h1>Gallery</h1></div>
+</section>
+<section class="gallery-section">
+  <div class="gallery-search-wrap">
+    <div class="gallery-search-box" id="gallerySearchBox">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="gallerySearchInput" placeholder="Search sofas, chairs, diwans…" autocomplete="off" aria-label="Search gallery products">
+      <button class="search-clear" id="gallerySearchClear" type="button" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="gallery-filter-pills" id="galleryFilterPills">
+      <button class="filter-pill active" type="button" data-cat="all">All</button>
+      <button class="filter-pill" type="button" data-cat="sofas">Sofas</button>
+      <button class="filter-pill" type="button" data-cat="diwans">Diwans</button>
+      <button class="filter-pill" type="button" data-cat="chairs">Chairs</button>
+    </div>
+  </div>
+  <div id="gallery-result-count"></div>
+  <div id="gallery-search-results"></div>
+  <div id="gallery-no-results">
+    <div class="no-results-icon"><i class="fa-solid fa-couch"></i></div>
+    <h3>No products found</h3>
+    <p>Try a different keyword or browse by category</p>
+  </div>
+  <div class="gallery-categories-wrap">
+    {% regroup products by category as groups %}
+    {% for group in groups %}
+    <div class="gallery-category" data-category="{{ group.grouper.slug }}">
+      <div class="gallery-category-label">
+        {% if group.grouper.slug == "sofas" %}Sofas{% elif group.grouper.slug == "diwans" %}Diwans{% else %}Chairs{% endif %}
+      </div>
+      <div class="gallery-grid">
+        {% for product in group.list %}
+        <div class="gallery-item" data-src="{{ product.image_url }}" data-caption="{{ product.name }}" data-product-url="{{ product.get_absolute_url }}">
+          <img src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <a class="gallery-detail-link" href="{{ product.get_absolute_url }}" onclick="event.stopPropagation()">View details</a>
+          <div class="gallery-caption-badge">{{ product.name }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+  <div class="lightbox-backdrop"></div>
+  <div class="lightbox-container">
+    <div class="lightbox-controls">
+      <button type="button" class="lb-btn lb-zoom-in" id="lbZoomIn" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <button type="button" class="lb-btn lb-zoom-out" id="lbZoomOut" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+      <button type="button" class="lb-btn lb-reset" id="lbReset" title="Reset Zoom"><i class="fa-solid fa-arrows-rotate"></i></button>
+      <button type="button" class="lb-btn lb-close" id="lbClose" title="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="lightbox-img-wrap" id="lbImgWrap">
+      <img src="" alt="" id="lbImg" draggable="false">
+    </div>
+    <div class="lightbox-caption" id="lbCaption"></div>
+    <button type="button" class="lb-arrow lb-prev" id="lbPrev" title="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <button type="button" class="lb-arrow lb-next" id="lbNext" title="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}

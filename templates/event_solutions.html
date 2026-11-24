@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Event Seating Solutions — Impress Signature Seating{% endblock %}
+{% block content %}
+<section class="nlv2_bredcrumb_wrapper"><div class="banner-content"><h1>Event Seating Solutions</h1></div></section>
+{% for title, subtitle, text, image, reverse in solutions %}
+<section class="wedding-section">
+  {% if reverse %}
+  <div class="wedding-image"><img src="{{ image }}" alt="{{ title }}"></div>
+  <div class="wedding-content2">
+    <h2>{{ title }}</h2>
+    <h5>{{ subtitle }}</h5>
+    <p>{{ text }}</p>
+    <a href="{% url 'gallery' %}" class="btn-gallery">view Collection</a>
+  </div>
+  {% else %}
+  <div class="wedding-content">
+    <h2>{{ title }}</h2>
+    <h5>{{ subtitle }}</h5>
+    <p>{{ text }}</p>
+    <a href="{% url 'gallery' %}" class="btn-gallery">view Collection</a>
+  </div>
+  <div class="wedding-image"><img src="{{ image }}" alt="{{ title }}"></div>
+  {% endif %}
+</section>
+{% endfor %}
+{% endblock %}
