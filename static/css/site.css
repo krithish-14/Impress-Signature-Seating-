@@ -253,6 +253,37 @@ button.consult-btn { border: 0; font: inherit; }
 .pdp-services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .pdp-services div { background: #f8f6f1; border-radius: 10px; padding: 10px 12px; color: #0d4a3e; font-weight: 600; }
 .pdp-related-title { color: #0d4a3e; margin: 36px 0 14px; }
+.pdp-related .product-card { color: inherit; text-decoration: none; }
+.pdp-related .product-img-wrap {
+  height: 220px !important;
+  flex: 0 0 220px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.pdp-related .product-img-wrap img {
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 190px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 auto !important;
+}
+.pdp-related .sofa-name { color: #1a1a1a !important; text-decoration: none; }
+.hero-slider .slide { animation-duration: 18s; }
+.hero-slider .slide:nth-child(1) { animation-delay: 0s; }
+.hero-slider .slide:nth-child(2) { animation-delay: 6s; }
+.hero-slider .slide:nth-child(3) { animation-delay: 12s; }
+@keyframes heroSlider {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  28% { opacity: 1; }
+  33% { opacity: 0; }
+  100% { opacity: 0; }
+}
 .pdp-lightbox {
   position: fixed;
   inset: 0;
@@ -372,7 +403,8 @@ button.consult-btn { border: 0; font: inherit; }
   .pdp-actions .pdp-outline:last-child { grid-column: 1 / -1; }
   .pdp-actions .consult-btn, .pdp-outline, .pdp-whatsapp { width: 100%; min-height: 44px; }
   .pdp-related-title { margin: 18px 0 8px; font-size: 20px; }
-  .pdp-related .product-img-wrap { height: 120px !important; flex-basis: 120px !important; }
+  .pdp-related .product-img-wrap { height: 160px !important; flex-basis: 160px !important; }
+  .pdp-related .product-img-wrap img { max-height: 140px !important; }
   .bag-item { grid-template-columns: 90px 1fr; }
   .bag-footer { gap: 12px; }
   .bag-actions { width: 100%; }

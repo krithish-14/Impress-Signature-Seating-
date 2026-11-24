@@ -41,7 +41,6 @@
         <div class="gallery-item" data-src="{{ product.image_url }}" data-caption="{{ product.name }}" data-product-url="{{ product.get_absolute_url }}">
           <img src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">
           <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <a class="gallery-detail-link" href="{{ product.get_absolute_url }}" onclick="event.stopPropagation()">View details</a>
           <div class="gallery-caption-badge">{{ product.name }}</div>
         </div>
         {% endfor %}

@@ -63,8 +63,6 @@
                 const imgSrc = item.el.getAttribute('data-src') || (imgEl ? imgEl.src : '');
                 const catLabel = item.category.charAt(0).toUpperCase() + item.category.slice(1);
                 const origIndex = allItems.indexOf(item);
-
-                const productUrl = item.el.getAttribute('data-product-url') || '/collections/sofas/';
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML =
@@ -76,7 +74,6 @@
                     '<div class="product-card-info">' +
                         '<div class="product-card-name">' + item.el.getAttribute('data-caption') + '</div>' +
                         '<div class="product-card-tag">' + catLabel + '</div>' +
-                        '<a class="product-card-open" href="' + productUrl + '">View details</a>' +
                     '</div>';
 
                 // Stagger animation
@@ -85,10 +82,6 @@
                 card.style.transition = 'opacity 0.35s ease ' + (i * 0.05) + 's, transform 0.35s ease ' + (i * 0.05) + 's';
 
                 card.addEventListener('click', function() { openLightbox(origIndex); });
-                const openLink = card.querySelector('.product-card-open');
-                if (openLink) {
-                    openLink.addEventListener('click', function(event) { event.stopPropagation(); });
-                }
                 resultsGrid.appendChild(card);
 
                 requestAnimationFrame(function() {
