@@ -6,7 +6,6 @@
   var cartBtn = document.getElementById("pdpCartBtn");
   var wishBtn = document.getElementById("pdpWishBtn");
   var enquireBtn = document.getElementById("pdpEnquireBtn");
-  var waBtn = document.getElementById("pdpWhatsappBtn");
 
   function current() {
     return { slug: cfg.slug, name: cfg.name, image: cfg.image, url: cfg.url, category: cfg.category, qty: qty ? qty.value : 1 };
@@ -17,8 +16,6 @@
   }
   function syncLinks() {
     var amount = qty && qty.value ? qty.value : "1";
-    var text = "Hi, I would like a quote for " + cfg.name + " (quantity: " + amount + ").";
-    if (waBtn) waBtn.href = "https://wa.me/" + cfg.whatsapp + "?text=" + encodeURIComponent(text);
     if (enquireBtn) enquireBtn.href = "/contact/?slug=" + encodeURIComponent(cfg.slug) + "&product=" + encodeURIComponent(cfg.name) + "&qty=" + encodeURIComponent(amount);
   }
   if (qty) qty.addEventListener("input", syncLinks);

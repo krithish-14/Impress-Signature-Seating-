@@ -4,7 +4,17 @@
   var listEl = document.getElementById("cartList");
   var footerEl = document.getElementById("cartFooter");
   var totalEl = document.getElementById("cartTotal");
+  var whatsappBtn = document.getElementById("cartWhatsappBtn");
   if (!store || !emptyEl || !listEl) return;
+
+  function whatsappLink(items) {
+    if (!whatsappBtn) return;
+    var lines = items.map(function (item) {
+      return "- " + (item.name || "Item") + " x " + (Number(item.qty) || 1);
+    }).join("\n");
+    var text = "Hi, I would like a quote for:\n" + lines;
+    whatsappBtn.href = "https://wa.me/" + whatsappBtn.getAttribute("data-whatsapp") + "?text=" + encodeURIComponent(text);
+  }
 
   function esc(value) {
     return String(value || "").replace(/[&<>"']/g, function (ch) {
@@ -22,6 +32,7 @@
       return '<article class="bag-item"><a href="' + esc(item.url) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.name) + '"></a><div class="bag-info"><p class="bag-cat">' + esc(item.category) + '</p><a href="' + esc(item.url) + '"><h3>' + esc(item.name) + '</h3></a><label>Qty <input type="number" min="1" value="' + esc(item.qty) + '" data-qty="' + esc(item.slug) + '"></label></div><button class="bag-remove" type="button" data-remove="' + esc(item.slug) + '" aria-label="Remove">×</button></article>';
     }).join("");
     totalEl.textContent = String(items.reduce(function (sum, item) { return sum + (Number(item.qty) || 1); }, 0));
+    whatsappLink(items);
   }
   listEl.addEventListener("change", function (event) {
     var slug = event.target.getAttribute("data-qty");

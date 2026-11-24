@@ -2,10 +2,10 @@
 {% load static %}
 {% block title %}{{ product.name }} — Impress Signature Seating{% endblock %}
 {% block content %}
-<section class="nlv2_bredcrumb_wrapper">
+<section class="nlv2_bredcrumb_wrapper pdp-banner">
   <div class="banner-content"><h1>{{ product.name }}</h1></div>
 </section>
-<section class="shop-section">
+<section class="shop-section pdp-page">
   <div class="pdp-wrap">
     <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
       <a href="{% url 'home' %}">Home</a>
@@ -46,13 +46,12 @@
           <button class="consult-btn" type="button" id="pdpCartBtn" {% if product.available_units < 1 %}disabled{% endif %}><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
           <button class="pdp-outline" type="button" id="pdpWishBtn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
           <a class="pdp-outline" id="pdpEnquireBtn" href="{% url 'contact' %}?slug={{ product.slug }}&product={{ product.name|urlencode }}&qty=1">Enquire about this piece</a>
-          <a class="pdp-whatsapp" id="pdpWhatsappBtn" target="_blank" rel="noreferrer" href="https://wa.me/{{ site_whatsapp }}"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
     </div>
     {% if related %}
     <h2 class="pdp-related-title">More from this collection</h2>
-    <div class="product-grid grid-cols-4">
+    <div class="product-grid grid-cols-4 pdp-related">
       {% for item in related %}
       <a class="product-card sofa-card" href="{{ item.get_absolute_url }}">
         <div class="product-img-wrap"><img src="{{ item.image_url }}" alt="{{ item.name }}"></div>
@@ -75,8 +74,7 @@ window.IMPRESS_PDP = {
   name: "{{ product.name|escapejs }}",
   image: "{{ product.image_url|escapejs }}",
   url: "{{ product.get_absolute_url|escapejs }}",
-  category: "{{ product.category.nav_label|escapejs }}",
-  whatsapp: "{{ site_whatsapp|escapejs }}"
+  category: "{{ product.category.nav_label|escapejs }}"
 };
 </script>
 <script src="{% static 'js/product.js' %}"></script>

@@ -14,7 +14,10 @@
     <div class="bag-list" id="cartList" hidden></div>
     <div class="bag-footer" id="cartFooter" hidden>
       <p>Items in cart: <strong id="cartTotal">0</strong></p>
-      <a class="consult-btn" href="{% url 'contact' %}">Request Quote</a>
+      <div class="bag-actions">
+        <a class="consult-btn" href="{% url 'contact' %}">Request Quote</a>
+        <a class="pdp-whatsapp" id="cartWhatsappBtn" data-whatsapp="{{ site_whatsapp }}" target="_blank" rel="noreferrer" href="https://wa.me/{{ site_whatsapp }}"><i class="fa-brands fa-whatsapp"></i> Enquire on WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>

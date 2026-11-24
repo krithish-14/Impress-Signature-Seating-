@@ -204,7 +204,9 @@ button.consult-btn { border: 0; font: inherit; }
   cursor: pointer;
   color: #0d4a3e;
 }
-.bag-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; color: #0d4a3e; }
+.bag-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 18px; color: #0d4a3e; }
+.bag-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.bag-actions .consult-btn, .bag-actions .pdp-whatsapp { min-height: 48px; }
 .bag-add {
   margin-top: 8px;
   background: #0d4a3e;
@@ -230,17 +232,38 @@ button.consult-btn { border: 0; font: inherit; }
 .quote-preview ul { margin: 8px 0 0 18px; }
 
 @media (max-width: 900px) {
-  body { padding-bottom: 88px; }
-  .pdp-card, .pdp-specs, .pdp-services, .bag-footer { grid-template-columns: 1fr; display: grid; }
-  .pdp-wrap { padding: 0 14px 24px; }
-  .pdp-card { padding: 14px; gap: 16px; border-radius: 14px; }
-  .pdp-main-img { min-height: 220px; }
-  .pdp-main-img img { max-height: 260px; }
-  .pdp-info h2 { font-size: 26px; }
-  .pdp-services { gap: 8px; }
-  .pdp-actions .consult-btn, .pdp-outline, .pdp-whatsapp { width: 100%; }
+  body { padding-bottom: 72px; }
+  .pdp-banner { height: 78px !important; }
+  .pdp-banner .banner-content h1 { font-size: 22px !important; line-height: 1.2; padding: 0 16px; }
+  .pdp-page.shop-section { padding: 16px 12px 28px; }
+  .pdp-breadcrumb { display: none; }
+  .pdp-card, .bag-footer { grid-template-columns: 1fr; display: grid; }
+  .pdp-specs { grid-template-columns: 1fr 1fr; }
+  .pdp-services { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .pdp-services div { padding: 8px 10px; font-size: 13px; }
+  .pdp-wrap { padding: 0; }
+  .pdp-card { padding: 12px; gap: 12px; border-radius: 14px; }
+  .pdp-main-img { min-height: 0; }
+  .pdp-main-img img { max-height: 190px; }
+  .pdp-zoom-hint { margin: 6px 0 0; font-size: 13px; }
+  .pdp-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 8px 0 0;
+  }
+  .pdp-kicker, .pdp-stock { display: none; }
+  .pdp-info h2 { display: none; }
+  .pdp-actions { grid-template-columns: 1fr 1fr; }
+  .pdp-actions .pdp-outline:last-child { grid-column: 1 / -1; }
+  .pdp-actions .consult-btn, .pdp-outline, .pdp-whatsapp { width: 100%; min-height: 44px; }
+  .pdp-related-title { margin: 18px 0 8px; font-size: 20px; }
+  .pdp-related .product-img-wrap { height: 120px !important; flex-basis: 120px !important; }
   .bag-item { grid-template-columns: 90px 1fr; }
   .bag-footer { gap: 12px; }
+  .bag-actions { width: 100%; }
+  .bag-actions .consult-btn, .bag-actions .pdp-whatsapp { flex: 1 1 160px; justify-content: center; }
   .header-bottom { flex-wrap: wrap; gap: 12px; }
   .whatsapp-sticky { bottom: 16px; right: 14px; }
   .product-grid.grid-cols-4 { gap: 12px; }
