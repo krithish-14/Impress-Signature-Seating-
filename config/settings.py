@@ -8,15 +8,21 @@ BRAND_IMAGES_ROOT = BASE_DIR / "brand-images"
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-impress-seating-dev-key")
 ON_VERCEL = bool(os.environ.get("VERCEL") or os.environ.get("VERCEL_URL"))
-DEBUG = not ON_VERCEL
+ON_RENDER = os.environ.get("RENDER") == "true"
+DEBUG = not (ON_VERCEL or ON_RENDER)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     ".vercel.app",
     ".now.sh",
+    ".onrender.com",
     "impress-signature-seating-dusky.vercel.app",
 ]
-CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app", "https://impress-signature-seating-dusky.vercel.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
+    "https://impress-signature-seating-dusky.vercel.app",
+    "https://*.onrender.com",
+]
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
 
@@ -32,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
