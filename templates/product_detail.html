@@ -45,7 +45,7 @@
           <span>Quantity</span>
           <div class="qty-stepper">
             <button type="button" data-qty-step="-1" aria-label="Decrease quantity" {% if product.available_units < 1 %}disabled{% endif %}>−</button>
-            <input id="pdp-qty" type="text" inputmode="numeric" value="1" data-max="{{ max_qty }}" readonly {% if product.available_units < 1 %}disabled{% endif %}>
+            <input id="pdp-qty" type="text" inputmode="numeric" value="1" data-max="{{ max_qty }}" {% if product.available_units < 1 %}disabled{% endif %}>
             <button type="button" data-qty-step="1" aria-label="Increase quantity" {% if product.available_units < 1 %}disabled{% endif %}>+</button>
           </div>
         </div>

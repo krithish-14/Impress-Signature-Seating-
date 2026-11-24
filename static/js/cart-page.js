@@ -29,18 +29,26 @@
     footerEl.hidden = empty;
     if (empty) { listEl.innerHTML = ""; return; }
     listEl.innerHTML = items.map(function (item) {
-      return '<article class="bag-item"><a href="' + esc(item.url) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.name) + '"></a><div class="bag-info"><p class="bag-cat">' + esc(item.category) + '</p><a href="' + esc(item.url) + '"><h3>' + esc(item.name) + '</h3></a><div class="qty-stepper"><button type="button" data-step="-1" data-slug="' + esc(item.slug) + '" aria-label="Decrease quantity">−</button><span>' + esc(item.qty) + '</span><button type="button" data-step="1" data-slug="' + esc(item.slug) + '" aria-label="Increase quantity">+</button></div></div><button class="bag-remove" type="button" data-remove="' + esc(item.slug) + '" aria-label="Remove">×</button></article>';
+      return '<article class="bag-item"><a href="' + esc(item.url) + '"><img src="' + esc(item.image) + '" alt="' + esc(item.name) + '"></a><div class="bag-info"><p class="bag-cat">' + esc(item.category) + '</p><a href="' + esc(item.url) + '"><h3>' + esc(item.name) + '</h3></a><div class="qty-stepper"><button type="button" data-step="-1" data-slug="' + esc(item.slug) + '" aria-label="Decrease quantity">−</button><input type="text" inputmode="numeric" value="' + esc(item.qty) + '" data-qty="' + esc(item.slug) + '" aria-label="Quantity"><button type="button" data-step="1" data-slug="' + esc(item.slug) + '" aria-label="Increase quantity">+</button></div></div><button class="bag-remove" type="button" data-remove="' + esc(item.slug) + '" aria-label="Remove">×</button></article>';
     }).join("");
     totalEl.textContent = String(items.reduce(function (sum, item) { return sum + (Number(item.qty) || 1); }, 0));
     whatsappLink(items);
   }
+  listEl.addEventListener("change", function (event) {
+    var input = event.target.closest("[data-qty]");
+    if (!input) return;
+    var next = Math.max(1, Number(input.value) || 1);
+    input.value = String(next);
+    store.setCartQty(input.getAttribute("data-qty"), next);
+  });
   listEl.addEventListener("click", function (event) {
     var stepBtn = event.target.closest("[data-step]");
     if (stepBtn) {
       var slug = stepBtn.getAttribute("data-slug");
+      var field = stepBtn.parentElement.querySelector("[data-qty]");
       var item = store.cart().find(function (entry) { return entry.slug === slug; });
       if (!item) return;
-      var next = (Number(item.qty) || 1) + Number(stepBtn.getAttribute("data-step"));
+      var next = (Number(field && field.value) || Number(item.qty) || 1) + Number(stepBtn.getAttribute("data-step"));
       if (next < 1) store.removeFromCart(slug);
       else store.setCartQty(slug, next);
       return;

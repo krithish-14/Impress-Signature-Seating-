@@ -62,9 +62,15 @@
 .card-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 4px;
 }
+.card-actions .card-qty { flex: 0 0 auto; }
+.card-actions .card-cart-btn { flex: 1 1 110px; min-height: 36px; padding: 8px 10px; }
+.card-actions .card-view-link { background: #fff; color: #0d4a3e; border: 1px solid #0d4a3e; }
+.chair-page .chair-info, .sofa-info { overflow: visible !important; }
+button.card-action-link { border: 0; font: inherit; font-weight: 700; cursor: pointer; }
 .card-action-link,
 .bag-add {
   display: inline-flex;
@@ -159,7 +165,7 @@
 }
 .qty-stepper button:disabled { opacity: .4; cursor: not-allowed; }
 .qty-stepper input, .qty-stepper span {
-  width: 42px;
+  width: 48px;
   border: 0;
   text-align: center;
   font: inherit;

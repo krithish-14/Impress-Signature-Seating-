@@ -18,6 +18,19 @@
     var amount = qty && qty.value ? qty.value : "1";
     if (enquireBtn) enquireBtn.href = "/contact/?slug=" + encodeURIComponent(cfg.slug) + "&product=" + encodeURIComponent(cfg.name) + "&qty=" + encodeURIComponent(amount);
   }
+  if (qty) {
+    qty.addEventListener("input", function () {
+      qty.value = qty.value.replace(/\D/g, "");
+      syncLinks();
+    });
+    qty.addEventListener("blur", function () {
+      var next = Math.max(1, Number(qty.value) || 1);
+      var limit = Number(qty.getAttribute("data-max") || 0);
+      if (limit) next = Math.min(limit, next);
+      qty.value = String(next);
+      syncLinks();
+    });
+  }
   document.querySelectorAll("[data-qty-step]").forEach(function (button) {
     button.addEventListener("click", function () {
       if (!qty || qty.disabled) return;
