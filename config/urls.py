@@ -9,5 +9,4 @@ urlpatterns = [
     path("", include("catalog.urls")),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static("/brand-images/", document_root=settings.BRAND_IMAGES_ROOT)
+urlpatterns += static("/brand-images/", document_root=settings.BRAND_IMAGES_ROOT)
