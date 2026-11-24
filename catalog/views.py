@@ -3,6 +3,7 @@ import re
 from urllib.parse import quote
 
 from django.conf import settings
+from django.db import DatabaseError
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST
@@ -107,8 +108,14 @@ def contact_submit(request):
     if errors:
         return JsonResponse({"success": False, "errors": errors, "message": "Please correct the highlighted fields."}, status=400)
 
-    inquiry = Inquiry.objects.create(name=name, email=email, phone=phone, message=message)
-    _save_quote_items(inquiry, request)
+    try:
+        inquiry = Inquiry.objects.create(name=name, email=email, phone=phone, message=message)
+        _save_quote_items(inquiry, request)
+    except DatabaseError:
+        return JsonResponse(
+            {"success": False, "message": "Unable to save this enquiry right now. Please try again in a moment."},
+            status=500,
+        )
     return JsonResponse(
         {
             "success": True,

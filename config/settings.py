@@ -1,5 +1,7 @@
 import os
+import shutil
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 BRAND_IMAGES_ROOT = BASE_DIR / "brand-images"
@@ -58,12 +60,39 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": {
+def _database():
+    database_url = os.environ.get("DATABASE_URL") or os.environ.get("POSTGRES_URL")
+    if database_url:
+        parsed = urlparse(database_url)
+        return {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": unquote(parsed.path.lstrip("/")),
+            "USER": unquote(parsed.username or ""),
+            "PASSWORD": unquote(parsed.password or ""),
+            "HOST": parsed.hostname or "",
+            "PORT": str(parsed.port or ""),
+            "OPTIONS": {"sslmode": "require"},
+        }
+
+    sqlite_path = BASE_DIR / "db.sqlite3"
+    if ON_VERCEL:
+        sqlite_path = Path("/tmp/impress.sqlite3")
+        if not sqlite_path.exists():
+            shutil.copyfile(BASE_DIR / "db.sqlite3", sqlite_path)
+            sqlite_path.chmod(0o666)
+    return {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": sqlite_path,
+        "OPTIONS": {"timeout": 20},
     }
-}
+
+
+DATABASES = {"default": _database()}
+
+if ON_VERCEL:
+    SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
