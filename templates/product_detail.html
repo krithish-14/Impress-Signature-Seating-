@@ -37,7 +37,6 @@
         <div class="sofa-divider"></div>
         <div class="pdp-specs">
           {% if product.size %}<div><span>Size</span><strong>{{ product.size }}</strong></div>{% endif %}
-          <div><span>Catalogue quantity</span><strong>{{ product.qty }}</strong></div>
           {% if product.style %}<div><span>Style</span><strong>{{ product.style }}</strong></div>{% endif %}
           <div><span>Category</span><strong>{{ product.category.nav_label }}</strong></div>
         </div>
@@ -57,8 +56,14 @@
       </div>
     </div>
     {% if related %}
-    <h2 class="pdp-related-title">More from this collection</h2>
-    <div class="product-grid grid-cols-4 pdp-related">
+    <div class="pdp-related-head">
+      <h2 class="pdp-related-title">More from this collection</h2>
+      <div class="pdp-related-nav">
+        <button type="button" data-related-dir="-1" aria-label="Previous pieces">‹</button>
+        <button type="button" data-related-dir="1" aria-label="Next pieces">›</button>
+      </div>
+    </div>
+    <div class="product-grid grid-cols-4 pdp-related" id="pdpRelated">
       {% for item in related %}
       <a class="product-card sofa-card" href="{{ item.get_absolute_url }}">
         <div class="product-img-wrap"><img src="{{ item.image_url }}" alt="{{ item.name }}"></div>

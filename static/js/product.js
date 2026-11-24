@@ -49,4 +49,13 @@
     window.setTimeout(function () { cartBtn.innerHTML = '<i class="fa-solid fa-bag-shopping"></i> Add to cart'; }, 1400);
   });
   if (wishBtn) wishBtn.addEventListener("click", function () { store.toggleWishlist(current()); syncWish(); });
+  var related = document.getElementById("pdpRelated");
+  document.querySelectorAll("[data-related-dir]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (!related) return;
+      var card = related.querySelector(".product-card");
+      var step = card ? card.getBoundingClientRect().width + 12 : 220;
+      related.scrollBy({ left: Number(button.getAttribute("data-related-dir")) * step, behavior: "smooth" });
+    });
+  });
 })();
