@@ -6,5 +6,4 @@
   </div>
   <button type="button" class="card-action-link card-cart-btn" data-add-cart data-slug="{{ product.slug }}" data-name="{{ product.name }}" data-image="{{ product.image_url }}" data-url="{{ product.get_absolute_url }}" data-category="{{ product.category.nav_label }}" {% if product.available_units < 1 %}disabled{% endif %}>Add to cart</button>
   <a class="card-action-link card-view-link" href="{{ product.get_absolute_url }}">View details</a>
-  <button type="button" class="card-icon-btn" data-toggle-wish data-slug="{{ product.slug }}" data-name="{{ product.name }}" data-image="{{ product.image_url }}" data-url="{{ product.get_absolute_url }}" data-category="{{ product.category.nav_label }}" aria-label="Save {{ product.name }} to wishlist"><i class="fa-regular fa-heart"></i></button>
 </div>

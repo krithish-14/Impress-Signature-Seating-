@@ -67,9 +67,71 @@
   margin-top: 4px;
 }
 .card-actions .card-qty { flex: 0 0 auto; }
-.card-actions .card-cart-btn { flex: 1 1 110px; min-height: 36px; padding: 8px 10px; }
+.card-actions .card-cart-btn,
+.card-actions .card-view-link { flex: 1 1 110px; min-height: 36px; padding: 8px 10px; }
 .card-actions .card-view-link { background: #fff; color: #0d4a3e; border: 1px solid #0d4a3e; }
-.chair-page .chair-info, .sofa-info { overflow: visible !important; }
+.product-img-wrap,
+.chair-img-section { position: relative; }
+.card-wish {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 6;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(13, 74, 62, 0.16);
+}
+.card-wish i { pointer-events: none; }
+.chair-page.product-grid { align-items: stretch; }
+.chair-page.product-grid .chair-card {
+  flex-direction: column !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  align-items: stretch !important;
+  overflow: hidden !important;
+}
+.chair-page .chair-img-section {
+  flex: 0 0 180px !important;
+  width: 100% !important;
+  height: 180px !important;
+  min-height: 180px !important;
+  border-right: none !important;
+  border-bottom: 1px solid #f2eee6 !important;
+}
+.chair-page .chair-img-wrap {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+.chair-page.product-grid .chair-info,
+.chair-page .chair-info {
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 8px;
+  align-items: center !important;
+  justify-content: start !important;
+  overflow: hidden !important;
+  padding: 12px 14px 14px !important;
+}
+.chair-page .chair-card-badge {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  grid-column: 1;
+  grid-row: 1;
+}
+.chair-page .chair-name { padding-right: 0 !important; grid-column: 2; grid-row: 1; }
+.chair-page .chair-divider { display: none !important; }
+.chair-page .chair-meta,
+.chair-page .card-actions { grid-column: 1 / -1; }
+.chair-page .card-actions { width: 100%; }
 button.card-action-link { border: 0; font: inherit; font-weight: 700; cursor: pointer; }
 .card-action-link,
 .bag-add {

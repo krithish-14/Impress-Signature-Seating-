@@ -25,6 +25,7 @@
             <div class="chair-img-section">
               <div class="product-img-wrap chair-img-wrap">
                 <a class="product-media-link" href="{{ product.get_absolute_url }}"><img src="{{ product.image_url }}" alt="{{ product.name }}"></a>
+                {% include "includes/wish_button.html" %}
               </div>
             </div>
             <div class="product-info chair-info">
@@ -47,6 +48,7 @@
           <div class="product-card sofa-card {{ product|card_class }}">
             <div class="product-img-wrap">
               <a class="product-media-link" href="{{ product.get_absolute_url }}"><img src="{{ product.image_url }}" alt="{{ product.name }}"></a>
+              {% include "includes/wish_button.html" %}
             </div>
             <div class="product-info sofa-info">
               <div class="sofa-card-title-row">
