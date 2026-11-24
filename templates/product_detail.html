@@ -30,7 +30,10 @@
       </div>
       <div class="pdp-info">
         <p class="pdp-kicker">{{ product.category.nav_label }} Collection</p>
-        <h2>{{ product.name }}</h2>
+        <div class="pdp-title-row">
+          <h2>{{ product.name }}</h2>
+          <span class="pdp-stock-tag {% if not product.available_units %}is-out{% endif %}">{% if product.available_units %}In stock{% else %}Rented out{% endif %}</span>
+        </div>
         <div class="sofa-divider"></div>
         <div class="pdp-specs">
           {% if product.size %}<div><span>Size</span><strong>{{ product.size }}</strong></div>{% endif %}
@@ -38,10 +41,14 @@
           {% if product.style %}<div><span>Style</span><strong>{{ product.style }}</strong></div>{% endif %}
           <div><span>Category</span><strong>{{ product.category.nav_label }}</strong></div>
         </div>
-        <p class="pdp-stock {% if not product.available_units %}is-out{% endif %}">{% if product.available_units %}In stock{% else %}Currently rented out{% endif %}</p>
-        <label class="pdp-qty" for="pdp-qty">Quantity
-          <input id="pdp-qty" type="number" min="1" max="{{ max_qty }}" value="1" {% if product.available_units < 1 %}disabled{% endif %}>
-        </label>
+        <div class="pdp-qty">
+          <span>Quantity</span>
+          <div class="qty-stepper">
+            <button type="button" data-qty-step="-1" aria-label="Decrease quantity" {% if product.available_units < 1 %}disabled{% endif %}>−</button>
+            <input id="pdp-qty" type="text" inputmode="numeric" value="1" data-max="{{ max_qty }}" readonly {% if product.available_units < 1 %}disabled{% endif %}>
+            <button type="button" data-qty-step="1" aria-label="Increase quantity" {% if product.available_units < 1 %}disabled{% endif %}>+</button>
+          </div>
+        </div>
         <div class="pdp-actions">
           <button class="consult-btn" type="button" id="pdpCartBtn" {% if product.available_units < 1 %}disabled{% endif %}><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
           <button class="pdp-outline" type="button" id="pdpWishBtn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>

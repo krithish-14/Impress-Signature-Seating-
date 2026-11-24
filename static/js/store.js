@@ -32,10 +32,27 @@
 
   function addToCart(item) {
     var items = read(CART_KEY);
-    var existing = items.find(function (entry) { return entry.slug === item.slug; });
+    var slug = String(item.slug || "").trim();
     var qty = Math.max(1, Number(item.qty) || 1);
-    if (existing) existing.qty = (Number(existing.qty) || 1) + qty;
-    else items.push({ slug: item.slug, name: item.name, image: item.image, url: item.url, category: item.category || "", qty: qty });
+    var index = items.findIndex(function (entry) {
+      return String(entry.slug || "").trim() === slug && slug !== "";
+    });
+    if (index === -1 && item.name) {
+      index = items.findIndex(function (entry) { return entry.name === item.name; });
+    }
+    if (index >= 0) {
+      var current = items[index];
+      items[index] = {
+        slug: slug || current.slug,
+        name: item.name || current.name,
+        image: item.image || current.image,
+        url: item.url || current.url,
+        category: item.category || current.category || "",
+        qty: (Number(current.qty) || 1) + qty
+      };
+    } else {
+      items.push({ slug: slug, name: item.name, image: item.image, url: item.url, category: item.category || "", qty: qty });
+    }
     write(CART_KEY, items);
   }
 
