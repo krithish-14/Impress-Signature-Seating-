@@ -36,6 +36,9 @@
         </div>
         <div class="sofa-divider"></div>
         <div class="pdp-specs">
+          {% if product.size and product.category.slug != "chairs" %}
+          <div><span>Size</span><strong>{{ product.size }}</strong></div>
+          {% endif %}
           <div><span>Category</span><strong>{{ product.category.nav_label }}</strong></div>
         </div>
         <div class="pdp-qty">
