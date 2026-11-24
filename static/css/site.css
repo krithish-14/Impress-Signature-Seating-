@@ -38,7 +38,20 @@
   font-weight: 700;
 }
 
-.product-media-link { display: block; width: 100%; height: 100%; }
+.product-media-link { display: block; width: 100%; height: 100%; overflow: hidden; color: inherit; text-decoration: none; }
+.product-img-wrap, .chair-img-wrap, .chair-img-section { overflow: hidden; }
+.chair-page .chair-img-wrap img,
+.chair-page.product-grid .chair-img-wrap img,
+.chair-page.product-grid.grid-cols-4 .chair-img-wrap img {
+  transform: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 auto !important;
+}
 .product-name a,
 .chair-name a,
 .sofa-name a { color: inherit; text-decoration: none; }
@@ -217,8 +230,18 @@ button.consult-btn { border: 0; font: inherit; }
 .quote-preview ul { margin: 8px 0 0 18px; }
 
 @media (max-width: 900px) {
+  body { padding-bottom: 88px; }
   .pdp-card, .pdp-specs, .pdp-services, .bag-footer { grid-template-columns: 1fr; display: grid; }
-  .bag-item { grid-template-columns: 90px 1fr; }
+  .pdp-wrap { padding: 0 14px 24px; }
+  .pdp-card { padding: 14px; gap: 16px; border-radius: 14px; }
+  .pdp-main-img { min-height: 220px; }
+  .pdp-main-img img { max-height: 260px; }
   .pdp-info h2 { font-size: 26px; }
+  .pdp-services { gap: 8px; }
+  .pdp-actions .consult-btn, .pdp-outline, .pdp-whatsapp { width: 100%; }
+  .bag-item { grid-template-columns: 90px 1fr; }
+  .bag-footer { gap: 12px; }
   .header-bottom { flex-wrap: wrap; gap: 12px; }
+  .whatsapp-sticky { bottom: 16px; right: 14px; }
+  .product-grid.grid-cols-4 { gap: 12px; }
 }

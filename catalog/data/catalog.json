@@ -95,7 +95,7 @@
       },
       {
         "name": "White Double Sofa",
-        "img": "images/Sofas/White Double Sofa.webp",
+        "img": "images/sofas/White Double Sofa.webp",
         "size": "H: 2.6 ft × W: 4.3 ft",
         "style": "",
         "qty": "200 Nos"
@@ -156,7 +156,7 @@
       },
       {
         "name": "Modular Ribbed Velvet Diwan",
-        "img": "images/diwans/Modular Ribbed Velvet Diwan.Webp",
+        "img": "images/diwans/Modular Ribbed Velvet Diwan.webp",
         "size": "5 Colours",
         "style": "",
         "qty": "4 Nos"
