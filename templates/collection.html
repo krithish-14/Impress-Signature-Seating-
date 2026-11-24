@@ -47,15 +47,6 @@
                 <h3 class="product-name sofa-name" title="{{ product.name }}"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
               </div>
               <div class="sofa-divider"></div>
-              <div class="sofa-meta-grid">
-                <div class="sofa-meta-block">
-                  <span class="meta-icon-wrap"><i class="fa-solid fa-ruler-combined"></i></span>
-                  <div class="meta-text-wrap">
-                    <span class="meta-label">Size:</span>
-                    <span class="meta-value size-value" title="{{ product.size }}">{{ product.size|sofa_size }}</span>
-                  </div>
-                </div>
-              </div>
               {% include "includes/card_actions.html" %}
             </div>
           </div>

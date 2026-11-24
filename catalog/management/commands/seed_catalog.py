@@ -61,7 +61,6 @@ class Command(BaseCommand):
                 keep.append(slug)
                 description = (
                     f"{item['name']} is part of the {category.name} collection. "
-                    f"Size: {item['size']}. "
                     "Add it to your cart or wishlist, then send an enquiry for a quote."
                 )
                 Product.objects.update_or_create(
